@@ -61,63 +61,20 @@
         <div class="container">
             <h2>Mis Proyectos Destacados</h2>
             <div class="projects-grid">
-
+                {# Bucle a través de cada proyecto que Flask nos envió #}
+                {% for project in projects %}
                 <div class="project-card">
-                    <h3>Optimización Agrícola con Predicciones Climáticas</h3>
-                    <p>
-                        Aplicación de Deep Learning y Descomposición Modal Dinámica (DMD) para generar predicciones climáticas locales altamente precisas, permitiendo a empresas agrícolas optimizar la planificación de cultivos y reducir pérdidas por fenómenos adversos.
-                    </p>
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
                     <ul class="project-tags">
-                        <li>Deep Learning</li>
-                        <li>DMD</li>
-                        <li>Python</li>
-                        <li>Series de Tiempo</li>
+                        {# Dividimos la cadena de tecnologías por coma y las mostramos #}
+                        {% for tech in project.technologies.split(', ') %}
+                        <li>{{ tech }}</li>
+                        {% endfor %}
                     </ul>
                     <a href="#" class="btn btn-secondary">Ver Detalles del Proyecto</a>
                 </div>
-
-                <div class="project-card">
-                    <h3>Segmentación de Usuarios para Marketing Personalizado</h3>
-                    <p>
-                        Desarrollo de modelos de clusterización para identificar segmentos de usuarios con comportamientos y preferencias similares, lo que permitió a una empresa de [Industria] personalizar sus campañas de marketing y mejorar la tasa de conversión en un X%.
-                    </p>
-                    <ul class="project-tags">
-                        <li>Clustering</li>
-                        <li>Scikit-learn</li>
-                        <li>Python</li>
-                        <li>Marketing Digital</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary">Ver Detalles del Proyecto</a>
-                </div>
-
-                <div class="project-card">
-                    <h3>Recopilación de Datos Web para Análisis Competitivo</h3>
-                    <p>
-                        Implementación de soluciones de web scraping para extraer datos clave de la competencia y tendencias de mercado, proporcionando insights accionables para la estrategia de precios y posicionamiento de productos.
-                    </p>
-                    <ul class="project-tags">
-                        <li>Web Scraping</li>
-                        <li>BeautifulSoup</li>
-                        <li>Scrapy</li>
-                        <li>Inteligencia de Mercado</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary">Ver Detalles del Proyecto</a>
-                </div>
-
-                 <div class="project-card">
-                    <h3>Análisis de Sentimientos de Clientes</h3>
-                    <p>
-                        Desarrollo de un sistema de análisis de sentimientos utilizando procesamiento de lenguaje natural (NLP) sobre comentarios de clientes, permitiendo a una empresa mejorar la satisfacción del cliente y la calidad de su servicio.
-                    </p>
-                    <ul class="project-tags">
-                        <li>NLP</li>
-                        <li>Análisis de Sentimientos</li>
-                        <li>NLTK/SpaCy</li>
-                        <li>Voz del Cliente</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary">Ver Detalles del Proyecto</a>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </section>

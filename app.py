@@ -42,9 +42,12 @@ class ContactMessage(db.Model):
 # Ruta para la página de inicio (portafolio)
 @app.route('/')
 def index():
-    # Aquí podríamos consultar proyectos de la BD en el futuro
-    # Por ahora, renderizamos la plantilla estática
-    return render_template('index.html')
+    projects = Project.query.all()
+    # ESTE PRINT ES CLAVE: Verifícalo en la terminal donde corres Flask
+    print(f"DEBUG_FLASK: Proyectos recuperados para la plantilla: {len(projects)} proyectos.")
+    if projects:
+        print(f"DEBUG_FLASK: Primer proyecto: {projects[0].title}")
+    return render_template('index.html', projects=projects)
 
 # Ruta para manejar el formulario de contacto (POST)
 @app.route('/contact', methods=['POST'])
