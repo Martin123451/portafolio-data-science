@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 import os # Módulo para interactuar con el sistema operativo (rutas de archivos)
 from datetime import datetime
@@ -13,6 +13,10 @@ app = Flask(__name__)
 # Esto asegura que la base de datos se cree en la raíz de tu proyecto
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.root_path, 'site.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Para deshabilitar eventos de seguimiento de SQLAlchemy (no necesarios para nosotros)
+app.config['SECRET_KEY'] = 'una_clave_muy_secreta_y_larga_que_deberias_cambiar_en_produccion'
+# ¡IMPORTANTE! En un proyecto real, esta clave NO debe estar directamente aquí.
+# Deberías cargarla desde una variable de entorno (ej. os.environ.get('SECRET_KEY')).
+# Pero para desarrollo local, está bien por ahora. Asegúrate que sea una cadena compleja.
 
 db = SQLAlchemy(app)
 
@@ -61,13 +65,13 @@ def contact():
         try:
             db.session.add(new_message)
             db.session.commit()
-            # Puedes añadir un mensaje flash para el usuario aquí
-            return redirect(url_for('index', success=True)) # Redirige a la página principal con un parámetro de éxito
+            flash('¡Tu mensaje ha sido enviado con éxito! Te responderé pronto.', 'success') # 'success' es una categoría
+            return redirect(url_for('index')) # Ya no necesitamos el parámetro 'success'
         except Exception as e:
-            # Manejo de errores, por ejemplo, rollback de la transacción
             db.session.rollback()
-            print(f"Error al guardar mensaje: {e}") # Imprimir error en consola del servidor
-            return redirect(url_for('index', error=True)) # Redirige con un parámetro de error
+            print(f"Error al guardar mensaje: {e}")
+            flash('Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.', 'error') # 'error' es otra categoría
+            return redirect(url_for('index')) # Ya no necesitamos el parámetro 'error'
 
 # --- Ejecución de la Aplicación ---
 if __name__ == '__main__':

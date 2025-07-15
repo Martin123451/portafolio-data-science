@@ -465,3 +465,66 @@ footer {
         padding: 20px;
     }
 }
+
+/* Estilos para Mensajes Flash */
+.flash-messages-container {
+    position: relative; /* Asegura que el contenedor tenga una posición para los hijos */
+    width: 100%;
+    max-width: 800px; /* Ancho máximo para el contenedor de mensajes */
+    margin: 20px auto 0 auto; /* Margen superior y centrado */
+    padding: 0 20px; /* Padding horizontal */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+}
+
+.flash-message {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex; /* Para alinear el texto y el botón de cierre */
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* Para el botón de cierre absoluto */
+}
+
+.flash-success {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde oscuro */
+    border: 1px solid #c3e6cb;
+}
+
+.flash-error {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #721c24; /* Rojo oscuro */
+    border: 1px solid #f5c6cb;
+}
+
+.close-flash-message {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: inherit; /* Hereda el color del texto del mensaje */
+    padding: 0;
+    line-height: 1; /* Para que el 'x' esté bien centrado */
+    margin-left: 15px;
+    transition: color 0.2s ease;
+}
+
+.close-flash-message:hover {
+    color: #000; /* Color más oscuro al pasar el ratón */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .flash-messages-container {
+        margin-top: 15px;
+        padding: 0 15px;
+    }
+    .flash-message {
+        font-size: 0.95rem;
+        padding: 12px 15px;
+    }
+}
