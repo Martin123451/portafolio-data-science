@@ -20,16 +20,16 @@ with app.app_context():
         description="Implementación de soluciones de web scraping para extraer datos clave de la competencia y tendencias de mercado, proporcionando insights accionables para la estrategia de precios y posicionamiento de productos.",
         technologies="Web Scraping, BeautifulSoup, Scrapy, Inteligencia de Mercado"
     )
-    #p4 = Project(
-    #    title="Análisis de Sentimientos de Clientes",
-    #    description="Desarrollo de un sistema de análisis de sentimientos utilizando procesamiento de lenguaje natural (NLP) sobre comentarios de clientes, permitiendo a una empresa mejorar la satisfacción del cliente y la calidad de su servicio.",
-    #    technologies="NLP, Análisis de Sentimientos, NLTK/SpaCy, Voz del Cliente"
-    #)
     p4 = Project(
-        title="Prueba",
-        description="Prueba base de datos",
-        technologies="Python, HTML, CSS"
+        title="Análisis de Sentimientos de Clientes",
+        description="Desarrollo de un sistema de análisis de sentimientos utilizando procesamiento de lenguaje natural (NLP) sobre comentarios de clientes, permitiendo a una empresa mejorar la satisfacción del cliente y la calidad de su servicio.",
+        technologies="NLP, Análisis de Sentimientos, NLTK/SpaCy, Voz del Cliente"
     )
+    #p4 = Project(
+    #    title="Prueba",
+    #    description="Prueba base de datos",
+    #    technologies="Python, HTML, CSS"
+    #)
 
     db.session.add_all([p1, p2, p3, p4])
     db.session.commit()

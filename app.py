@@ -35,6 +35,7 @@ class ContactMessage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), nullable=False)
+    phone_number = db.Column(db.String(50), nullable=True) # Nuevo campo para el teléfono
     message = db.Column(db.Text, nullable=False)
     date_sent = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -59,9 +60,15 @@ def contact():
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
+        phone_number = request.form.get('phone_number') # Usamos .get() por si el campo no se envía o es opcional
         message = request.form['message']
 
-        new_message = ContactMessage(name=name, email=email, message=message)
+        new_message = ContactMessage(
+            name=name,
+            email=email,
+            phone_number=phone_number, # ¡Asegúrate de añadir esto!
+            message=message
+        )
         try:
             db.session.add(new_message)
             db.session.commit()
