@@ -22,7 +22,7 @@
     </div>
     <header>
         <div class="container">
-            <a href="#" class="logo">Tu Consultora DS</a>
+            <a href="#" class="logo">Data Master</a>
             <nav>
                 <ul>
                     <li><a href="#about">Sobre Mí</a></li>
@@ -38,7 +38,7 @@
     <section id="hero">
         <div class="container">
             <h1>Impulsa Tu Negocio con <br> Datos y Estrategia de Producto</h1>
-            <p>Soy [Tu Nombre], Ingeniero Civil Industrial y Magíster en Data Science, con experiencia en gestión de producto. Te ayudo a transformar tus datos en soluciones de negocio tangibles.</p>
+            <p>Soy Martín Marchant, Ingeniero Civil Industrial y Magíster en Data Science, con experiencia en gestión de producto. Te ayudo a transformar tus datos en soluciones de negocio tangibles.</p>
             <a href="#contact" class="btn btn-primary">¡Hablemos de tu Proyecto!</a>
         </div>
     </section>
@@ -83,7 +83,7 @@
                         <li>{{ tech }}</li>
                         {% endfor %}
                     </ul>
-                    <a href="#" class="btn btn-secondary">Ver Detalles del Proyecto</a>
+                    <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-secondary">Ver Detalles del Proyecto</a>
                 </div>
                 {% endfor %}
             </div>
@@ -162,7 +162,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Tu Consultora DS. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Data Master. Todos los derechos reservados.</p>
             <div class="social-links">
                 <a href="#">LinkedIn</a>
                 <a href="#">GitHub</a>

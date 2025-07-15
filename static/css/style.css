@@ -528,3 +528,94 @@ footer {
         padding: 12px 15px;
     }
 }
+
+/* Estilos para Páginas de Detalle de Proyectos */
+.detail-page-body {
+    background-color: var(--white); /* Fondo diferente si lo deseas */
+}
+
+.detail-section {
+    padding: 60px 0;
+    background-color: var(--light-gray);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: transform 0.2s ease;
+}
+
+.back-link:hover {
+    transform: translateX(-5px);
+}
+
+#project-detail h1 {
+    text-align: left;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--dark-gray);
+}
+
+.project-meta {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.tech-tag {
+    background-color: var(--medium-gray);
+    color: #4b5563;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    margin-right: 5px;
+    display: inline-block; /* Asegura que se comporten como etiquetas */
+}
+
+.project-description-full p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.project-detail-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cta-detail-page {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-top: 50px;
+}
+
+.cta-detail-page p {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    color: var(--dark-gray);
+    font-weight: 600;
+}
+
+/* Media Queries para Páginas de Detalle */
+@media (max-width: 768px) {
+    #project-detail h1 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    .project-meta {
+        text-align: center;
+    }
+    .tech-tag {
+        margin-bottom: 5px; /* Espacio para tags en móvil */
+    }
+}

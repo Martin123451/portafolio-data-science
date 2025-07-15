@@ -72,6 +72,13 @@ def contact():
             print(f"Error al guardar mensaje: {e}")
             flash('Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.', 'error') # 'error' es otra categoría
             return redirect(url_for('index')) # Ya no necesitamos el parámetro 'error'
+        
+# Ruta para la página de detalle de un proyecto
+@app.route('/project/<int:project_id>')
+def project_detail(project_id):
+    # Busca el proyecto por su ID. Si no lo encuentra, devuelve un error 404.
+    project = Project.query.get_or_404(project_id)
+    return render_template('project_detail.html', project=project)
 
 # --- Ejecución de la Aplicación ---
 if __name__ == '__main__':
