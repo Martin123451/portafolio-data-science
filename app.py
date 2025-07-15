@@ -42,17 +42,24 @@ class ContactMessage(db.Model):
     def __repr__(self):
         return f'<ContactMessage {self.email}>'
 
+class Service(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    short_description = db.Column(db.String(250), nullable=False) # Descripción corta para la tarjeta
+    full_description = db.Column(db.Text, nullable=False) # Descripción detallada para la página del servicio
+    icon = db.Column(db.String(50), nullable=True) # Opcional: para un icono visual
+
+    def __repr__(self):
+        return f'<Service {self.title}>'
+
 # --- Rutas (Endpoints) de la Aplicación ---
 
 # Ruta para la página de inicio (portafolio)
 @app.route('/')
 def index():
     projects = Project.query.all()
-    # ESTE PRINT ES CLAVE: Verifícalo en la terminal donde corres Flask
-    print(f"DEBUG_FLASK: Proyectos recuperados para la plantilla: {len(projects)} proyectos.")
-    if projects:
-        print(f"DEBUG_FLASK: Primer proyecto: {projects[0].title}")
-    return render_template('index.html', projects=projects)
+    services = Service.query.all() # Nueva línea para obtener los servicios
+    return render_template('index.html', projects=projects, services=services) # Pasa services a la plantilla
 
 # Ruta para manejar el formulario de contacto (POST)
 @app.route('/contact', methods=['POST'])
@@ -86,6 +93,11 @@ def project_detail(project_id):
     # Busca el proyecto por su ID. Si no lo encuentra, devuelve un error 404.
     project = Project.query.get_or_404(project_id)
     return render_template('project_detail.html', project=project)
+
+@app.route('/service/<int:service_id>')
+def service_detail(service_id):
+    service = Service.query.get_or_404(service_id)
+    return render_template('service_detail.html', service=service)
 
 # --- Ejecución de la Aplicación ---
 if __name__ == '__main__':

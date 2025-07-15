@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ project.title }} - Detalles del Proyecto</title>
+    <title>{{ service.title }} - Detalles del Servicio</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -24,27 +24,24 @@
         </div>
     </header>
 
-    <section id="project-detail" class="detail-section">
+    <section id="service-detail" class="detail-section">
         <div class="container">
-            <a href="{{ url_for('index') }}#projects" class="back-link">&larr; Volver a Proyectos</a>
-            <h1>{{ project.title }}</h1>
-            <div class="project-meta">
-                <p><strong>Tecnologías Utilizadas:</strong>
-                    {% for tech in project.technologies.split(', ') %}
-                        <span class="tech-tag">{{ tech }}</span>{% if not loop.last %},{% endif %}
-                    {% endfor %}
-                </p>
-                {# Puedes añadir más metadatos aquí, como la fecha, cliente, etc. #}
-            </div>
-            <div class="project-description-full">
-                <p>{{ project.description }}</p>
-                <p>Aquí puedes añadir mucho más detalle sobre el proyecto, los desafíos técnicos, la metodología utilizada, gráficos de resultados, capturas de pantalla, testimonios del cliente, etc.</p>
-                <p>Por ejemplo, en este proyecto, logramos una mejora del XX% en la precisión de las predicciones, lo que se tradujo en una reducción del YY% en los costos operativos del cliente.</p>
-                {# Aquí irían imágenes o gráficos, por ahora solo texto #}
+            <a href="{{ url_for('index') }}#services" class="back-link">&larr; Volver a Servicios</a>
+            <h1>{{ service.title }}</h1>
+            <div class="service-description-full">
+                <p>{{ service.full_description }}</p>
+                {# Aquí puedes añadir más detalles, beneficios, cómo funciona el servicio, casos de uso, etc. #}
+                <p>Enfocados en la pequeña y mediana empresa, entendemos tus desafíos y ofrecemos soluciones a medida que no requieren grandes inversiones iniciales.</p>
+                <ul>
+                    <li>Beneficio 1: Optimización de recursos</li>
+                    <li>Beneficio 2: Decisiones basadas en datos</li>
+                    <li>Beneficio 3: Incremento de la eficiencia</li>
+                </ul>
+                {# Puedes añadir imágenes si las necesitas aquí #}
                 </div>
             <div class="cta-detail-page">
-                <p>¿Te gustaría aplicar soluciones similares en tu negocio?</p>
-                <a href="{{ url_for('index') }}#contact" class="btn btn-primary">¡Hablemos de tu Proyecto!</a>
+                <p>¿Listo para llevar tu negocio al siguiente nivel con datos?</p>
+                <a href="{{ url_for('index') }}#contact" class="btn btn-primary">¡Solicita una Consulta Gratuita!</a>
             </div>
         </div>
     </section>

@@ -25,9 +25,9 @@
             <a href="#" class="logo">Data Master</a>
             <nav>
                 <ul>
+                    <li><a href="#services">Servicios</a></li>
                     <li><a href="#about">Sobre Mí</a></li>
                     <li><a href="#projects">Proyectos</a></li>
-                    <li><a href="#services">Servicios</a></li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
             </nav>
@@ -43,11 +43,30 @@
         </div>
     </section>
 
+    <section id="services">
+            <div class="container">
+                <h2>Nuestros Servicios Clave</h2>
+                <div class="services-grid">
+                    {% for service in services %}
+                    <div class="service-card"> {# Ahora es un DIV de nuevo #}
+                        <h3>{{ service.title }}</h3>
+                        <p>{{ service.short_description }}</p>
+                        {# Puedes añadir un icono si lo definiste en el modelo y CSS: #}
+                        {# {% if service.icon %}
+                            <i class="icon-{{ service.icon }}"></i>
+                        {% endif %} #}
+                        <a href="{{ url_for('service_detail', service_id=service.id) }}" class="btn btn-secondary">Ver Detalles</a> {# ¡El nuevo botón! #}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
     <section id="about">
         <div class="container">
             <h2>Sobre Mí</h2>
             <div class="about-content">
-                <img src="{{ url_for('static', filename='img/martin_test.jpg') }}" alt="Martín Marchant" class="profile-img">
+                <img src="{{ url_for('static', filename='img/martin_marchant.jpeg') }}" alt="Martín Marchant" class="profile-img">
                 <div class="about-text">
                     <p>
                         Con una sólida formación como Ingeniero Civil Industrial y un Magíster en Data Science, mi pasión reside en conectar el poder de los datos con la estrategia de negocio. Mi experiencia como Product Manager en el sector tecnológico me ha dotado de una perspectiva única para identificar problemas, diseñar soluciones centradas en el usuario y llevar productos exitosos al mercado.
@@ -86,50 +105,6 @@
                     <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-secondary">Ver Detalles del Proyecto</a>
                 </div>
                 {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="container">
-            <h2>Mis Servicios</h2>
-            <div class="services-grid">
-
-                <div class="service-card">
-                    <h3>Consultoría en Estrategia de Datos</h3>
-                    <p>
-                        Ayudo a definir cómo los datos pueden impulsar tus objetivos de negocio, identificando oportunidades y creando hojas de ruta claras para la implementación de soluciones de datos.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <h3>Modelado Predictivo y Machine Learning</h3>
-                    <p>
-                        Desarrollo e implementación de modelos de ML para forecasting, segmentación de clientes, optimización de procesos y personalización de la experiencia del usuario.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <h3>Análisis de Datos y Business Intelligence</h3>
-                    <p>
-                        Transformación de datos crudos en insights accionables a través de análisis profundos y la creación de dashboards interactivos para la toma de decisiones.
-                    </p>
-                </div>
-
-                 <div class="service-card">
-                    <h3>Optimización de Producto Basada en Datos</h3>
-                    <p>
-                        Aplicación de principios de Data Science para mejorar el rendimiento de productos digitales, desde la experimentación (A/B testing) hasta la personalización.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <h3>Web Scraping e Integración de Datos</h3>
-                    <p>
-                        Recolección automatizada de información de la web y otras fuentes, asegurando datos limpios y estructurados para análisis avanzados.
-                    </p>
-                </div>
-
             </div>
         </div>
     </section>

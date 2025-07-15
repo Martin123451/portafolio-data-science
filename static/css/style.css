@@ -286,6 +286,9 @@ nav ul li a:hover {
     padding: 24px;
     border-left: 4px solid var(--primary-color); /* Borde lateral como indicador */
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .service-card:hover {
@@ -299,8 +302,15 @@ nav ul li a:hover {
 
 .service-card p {
     color: #4b5563;
+    margin-bottom: 1.5rem;
 }
 
+.service-card .btn {
+    margin-top: auto; /* Para empujar el botón hacia abajo si el contenido varía en altura */
+    display: block; /* Para que el botón ocupe todo el ancho de la tarjeta */
+    width: fit-content; /* Se ajusta al contenido */
+    margin-left: 0; /* Asegura alineación a la izquierda si es necesario */
+}
 
 /* Contact Section */
 #contact {
@@ -619,3 +629,16 @@ footer {
         margin-bottom: 5px; /* Espacio para tags en móvil */
     }
 }
+
+/* Estilos para Páginas de Detalle de Servicios (similar a proyectos) */
+.service-detail-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Puedes ajustar h1, p, etc. en .detail-section si quieres diferencias entre proyectos y servicios */
+/* Por ahora, reusarán los estilos de .detail-section y #project-detail h1, etc. */
