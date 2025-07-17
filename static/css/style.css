@@ -152,26 +152,82 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* Hero Section (Revisada para Impacto) */
 #hero {
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(to right, var(--primary-color) 0%, var(--secondary-color) 100%); /* Mantén el gradiente */
     color: var(--white);
-    padding: 80px 0;
+    padding: 100px 0; /* Aumenta el padding para que sea más grande */
     text-align: center;
+    position: relative; /* Para posibles efectos de fondo más complejos si los añades */
+    overflow: hidden; /* Asegura que nada se salga si hay animaciones */
 }
 
-#hero h1 {
+#hero .hero-title { /* Nueva clase */
     color: var(--white);
-    margin-bottom: 1rem;
+    font-size: 4.5rem; /* ¡Más grande y llamativo! */
+    font-weight: 800; /* Extra bold */
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra de texto sutil para que resalte */
+    letter-spacing: -1px; /* Ajuste para que se vea más moderno */
 }
 
-#hero p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    max-width: 800px;
+#hero .hero-subtitle { /* Nueva clase */
+    font-size: 1.5rem; /* Tamaño de subtítulo más prominente */
+    margin-bottom: 3rem; /* Más espacio entre subtítulo y botón */
+    max-width: 900px; /* Un poco más de ancho para el texto */
     margin-left: auto;
     margin-right: auto;
-    opacity: 0.9;
+    opacity: 0.95; /* Ligeramente más opaco */
+    font-weight: 500; /* Algo más de peso */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+#hero .hero-subtitle strong { /* Estilo para las negritas dentro del subtítulo */
+    color: var(--white); /* o un blanco más brillante */
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+#hero .hero-cta { /* Nueva clase para el botón */
+    padding: 15px 40px; /* Botón más grande */
+    font-size: 1.15rem; /* Texto del botón más grande */
+    border: 2px solid var(--white); /* Borde blanco para que resalte más */
+    color: var(--primary-color); /* Color de texto del botón */
+    background-color: var(--white); /* Fondo blanco del botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra más profunda */
+}
+
+#hero .hero-cta:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* Ligeramente transparente al pasar el ratón */
+    transform: translateY(-3px); /* Pequeña elevación */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries para Responsiveness - Ajustes para que se vea bien en móviles */
+@media (max-width: 768px) {
+    #hero {
+        padding: 80px 0; /* Menos padding en móvil */
+    }
+    #hero .hero-title {
+        font-size: 3rem; /* Tamaño de título más pequeño en móvil */
+        margin-bottom: 1rem;
+    }
+    #hero .hero-subtitle {
+        font-size: 1.1rem; /* Tamaño de subtítulo más pequeño en móvil */
+        margin-bottom: 2rem;
+        max-width: 90%;
+    }
+    #hero .hero-cta {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero .hero-title {
+        font-size: 2.5rem;
+    }
 }
 
 /* About Me Section */
@@ -280,24 +336,28 @@ nav ul li a:hover {
 }
 
 .service-card {
-    background-color: var(--light-gray);
+    background-color: var(--white); /* Cambiado a blanco para contraste */
     border-radius: 8px;
     box-shadow: var(--shadow);
     padding: 24px;
-    border-left: 4px solid var(--primary-color); /* Borde lateral como indicador */
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: flex; /* Para usar flexbox */
+    flex-direction: column; /* Apila el contenido verticalmente */
+    justify-content: space-between; /* Empuja el botón al final si hay espacio */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Asegura que el enlace no tenga subrayado si vuelves a hacer la card entera un enlace */
+    color: inherit; /* Hereda el color del texto para que no se vea el azul de enlace por defecto */
+    min-height: 250px; /* Ejemplo: ajusta la altura mínima para tarjetas consistentes */
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
 .service-card h3 {
-    color: var(--primary-color);
+    color: var(--dark-gray); /* Negro o gris oscuro para títulos de card */
     margin-bottom: 0.75rem;
+    font-size: 1.5rem; /* Ajusta el tamaño de la fuente si es necesario */
 }
 
 .service-card p {
@@ -306,10 +366,83 @@ nav ul li a:hover {
 }
 
 .service-card .btn {
-    margin-top: auto; /* Para empujar el botón hacia abajo si el contenido varía en altura */
-    display: block; /* Para que el botón ocupe todo el ancho de la tarjeta */
-    width: fit-content; /* Se ajusta al contenido */
-    margin-left: 0; /* Asegura alineación a la izquierda si es necesario */
+    margin-top: auto; /* Empuja el botón al final de la tarjeta */
+    align-self: flex-start; /* Alinea el botón a la izquierda */
+    /* Si quieres que ocupe todo el ancho, usa width: 100%; */
+}
+
+/* Estilos para los íconos de servicio en las tarjetas */
+.service-card .service-icon {
+    text-align: center; /* Centra el ícono si quieres */
+    margin-bottom: 1rem;
+}
+
+.service-card .service-icon i {
+    font-size: 3rem; /* Tamaño grande para el ícono */
+    color: var(--primary-color); /* Color azul principal */
+    /* Si quieres un círculo alrededor del ícono */
+    /*
+    background-color: var(--light-gray);
+    border-radius: 50%;
+    padding: 15px;
+    width: 80px;
+    height: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    */
+}
+
+/* Estilos para las Páginas de Detalle de Servicio - Ajustes de color y texto */
+.service-description-full p,
+.service-description-full ul li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.service-description-full ul {
+    list-style: disc;
+    padding-left: 25px;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.service-description-full ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para las secciones de color en las páginas de detalle */
+.section-white-gray {
+    background-color: var(--white);
+    padding: 40px 0;
+    text-align: left;
+}
+.section-blue {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
+}
+.section-blue h2, .section-blue h3 {
+    color: var(--white);
+}
+.section-blue ul {
+    list-style: none; /* Quita viñetas por defecto */
+    padding: 0;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.section-blue ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+/* Para los íconos dentro de los beneficios */
+.section-blue ul li strong {
+    font-weight: 700;
+    color: var(--white);
 }
 
 /* Contact Section */
@@ -642,3 +775,39 @@ footer {
 
 /* Puedes ajustar h1, p, etc. en .detail-section si quieres diferencias entre proyectos y servicios */
 /* Por ahora, reusarán los estilos de .detail-section y #project-detail h1, etc. */
+
+/* Estilos para las listas y párrafos dentro de las descripciones completas de servicio */
+.service-description-full p {
+    font-size: 1.1rem; /* Tamaño de fuente para párrafos */
+    line-height: 1.8;  /* Espaciado entre líneas para legibilidad */
+    color: var(--text-color); /* Color de texto estándar */
+    margin-bottom: 1rem; /* Margen inferior para separar párrafos */
+}
+
+.service-description-full ul {
+    list-style: disc; /* Oculta los puntos de lista predeterminados */
+    padding-left: 25px; /* Sangría para las listas */
+    margin-top: 1.5rem; /* Margen superior de la lista */
+    margin-bottom: 1.5rem; /* Margen inferior de la lista */
+}
+
+.service-description-full ul li {
+    margin-bottom: 0.8rem; /* Espacio entre cada elemento de la lista */
+    line-height: 1.6; /* Espaciado de línea para los elementos de la lista */
+    color: var(--text-color); /* Color de texto estándar para elementos de la lista */
+}
+
+/* Estilo para el texto en negrita dentro de las listas o párrafos (como los emojis) */
+.service-description-full strong {
+    font-weight: 700; /* Asegura que el texto esté en negrita */
+    color: var(--dark-gray); /* O puedes usar var(--primary-color) para que el texto resaltado sea azul */
+}
+
+/* Si usas encabezados h4, h5, etc. dentro de la descripción completa */
+.service-description-full h4,
+.service-description-full h5 {
+    margin-top: 2rem; /* Margen superior para separarlos del contenido anterior */
+    margin-bottom: 1rem; /* Margen inferior */
+    font-weight: 600; /* Peso de la fuente */
+    color: var(--dark-gray); /* Color de los encabezados */
+}

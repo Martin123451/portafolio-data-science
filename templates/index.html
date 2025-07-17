@@ -6,6 +6,7 @@
     <title>Tu Consultora DS - Portafolio de Data Science y Producto</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="flash-messages-container">
@@ -37,9 +38,9 @@
 
     <section id="hero">
         <div class="container">
-            <h1>Impulsa Tu Negocio con <br> Datos y Estrategia de Producto</h1>
-            <p>Soy Martín Marchant, Ingeniero Civil Industrial y Magíster en Data Science, con experiencia en gestión de producto. Te ayudo a transformar tus datos en soluciones de negocio tangibles.</p>
-            <a href="#contact" class="btn btn-primary">¡Hablemos de tu Proyecto!</a>
+            <h1 class="hero-title">Datos que Impulsan tu PYME: Crecimiento y Rentabilidad.</h1>
+            <p class="hero-subtitle">Convertimos la información de tu negocio en estrategias claras para <strong>más ventas, menos costos y decisiones inteligentes<strong>. Soluciones de datos a tu medida, sin complicaciones técnicas.</p>
+            <a href="#services" class="btn btn-primary hero-cta">Descubre Soluciones a Tu Medida</a>
         </div>
     </section>
 
@@ -48,14 +49,13 @@
                 <h2>Nuestros Servicios Clave</h2>
                 <div class="services-grid">
                     {% for service in services %}
-                    <div class="service-card"> {# Ahora es un DIV de nuevo #}
+                    <div class="service-card">
+                        {% if service.icon %}
+                            <div class="service-icon"><i class="fas fa-{{ service.icon }}"></i></div>
+                        {% endif %}
                         <h3>{{ service.title }}</h3>
                         <p>{{ service.short_description }}</p>
-                        {# Puedes añadir un icono si lo definiste en el modelo y CSS: #}
-                        {# {% if service.icon %}
-                            <i class="icon-{{ service.icon }}"></i>
-                        {% endif %} #}
-                        <a href="{{ url_for('service_detail', service_id=service.id) }}" class="btn btn-secondary">Ver Detalles</a> {# ¡El nuevo botón! #}
+                        <a href="{{ url_for('service_detail', service_id=service.id) }}" class="btn btn-secondary">Ver Detalles del Servicio</a>
                     </div>
                     {% endfor %}
                 </div>

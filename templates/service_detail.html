@@ -6,6 +6,7 @@
     <title>{{ service.title }} - Detalles del Servicio</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="detail-page-body">
 
@@ -29,7 +30,7 @@
             <a href="{{ url_for('index') }}#services" class="back-link">&larr; Volver a Servicios</a>
             <h1>{{ service.title }}</h1>
             <div class="service-description-full">
-                <p>{{ service.full_description }}</p>
+                {{ service.full_description | safe }}
                 {# Aquí puedes añadir más detalles, beneficios, cómo funciona el servicio, casos de uso, etc. #}
                 <p>Enfocados en la pequeña y mediana empresa, entendemos tus desafíos y ofrecemos soluciones a medida que no requieren grandes inversiones iniciales.</p>
                 <ul>
